@@ -26,7 +26,28 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Comp />
     </>
+  );
+}
+
+let owner: string | undefined = "Vite";
+
+function useDocumentTitle(title: string) {
+  document.title = title;
+}
+
+const Comp = () => {
+  useDocumentTitle(`Subscription · ${owner ?? ""}`);
+
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <button onClick={() => setCount((count) => count + 1)}>
+        count is {count}
+      </button>
+    </div>
   );
 }
 
